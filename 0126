@@ -28,8 +28,7 @@ jsp는 servlet으로 바뀌어 실행되고 servlet의 라이프 사이클을 �
 WAS는 웹 브라우저로 부터 JSP에 대한 요청을 받게되면 JSP를 servlet으로 변환한 후 컴파일하여 실행시킨다.
 
 4. jsp의 내장객체
-jsp에는 request, response, out, application 등 과 같은 객체들이 선언되어 있다.
-따라서 특별한 선언없이 사용할 수 있는 것이다.
-
+_jspService 메서드에는 기본적으로 출력(out), 세션(out), 요청(request), 응답(response)등을 담당하는 객체들이 내장되어 있는데 내장된 객체는 해당 메소드 안에서만 사용 할 수 있습니다. 
+따라서 선언문 <%! %> 에서는 내장객체를 사용할 수 없다.
 
 Jsp는 servlet으로 변환되어 실행된다는 것을 기억하자!
