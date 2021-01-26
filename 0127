@@ -1,0 +1,38 @@
+
+servlet & jsp
+
+
+1. redirect
+클라이언트가 서버에게 요청했을때 서버는 다시 클라이언트에게 특정 URL로 이동을 요청할 수 있는데, 이를 redirect라고 한다.
+redirect는 클라이언트가 서버로 요청 -> 서버가 다시 클라이언트에게 특정 URL로 이동하라고 요청 -> 클라이언트는 다시 서버에게 특정 URL을 요청하는 과정을 거친다.
+따라서 클라이언트는 요청을 두 번하게 되는 것 이다.
+
+2. forward
+forward는 클라이언트가 서버에게 요청했을 때 받은 request를 하나의 servlet 또는 jsp에서 처리하다가 다른 servlet 또는 jsp에게 request객체를 전달하여 처리를 요청하는 것 이다.
+이 때 다른 servlet&jsp에게 요청했을 때 URL은 바뀌지 않는다.
+forward는 같은 applicataion의 servlet&jsp에게만 요청가능하다.
+
+servlet에서 로직을 작성하고 jsp에게 출력을 요청하는 방식으로 사용할 수 있다. (servlet은 로직, jsp는 출력에 최적화되어 있기 때문이다.)
+
+3. scope
+scope는 총 4가지로 나눌 수 있다.
+
+  1) page
+  page 영역은 하나의 servlet 또는 jsp파일에 해당하는 영역이다. 여기에 해당하는 객체는 이 영역내에서만 사용 가능하다.
+  
+  2) request
+  request 영역은 하나의 요청에 대한 영역이다. foward를 예로 들 수 있다. 서버에게 요청이 들어왔을 때 객체가 생성되고, 서버가 요청을 완료하고 클라이언트에게 제공했을 때 객체는 사라진다.
+  
+  3) session
+  session은 하나의 브라우저(사용자)에 대한 영역이다. 로그인, 장바구니, 등등 하나의 사용자가 데이터를 유지해야할 때 사용되는 영역이다.
+  
+  4) application 
+  application 영역은 전체 application이 실행될 때 생성되고, 종료될 때 삭제된다. 즉, 모든 브라우저(사용자)가 공통으로 사용하는 데이터가 이 영역에 포함된다.
+  
+  각 영역에 대한 객체는 
+  
+  ServletContext application = getServletContext();
+  application.setAttribute("key", value)
+  application.getAttribute("key")
+  
+  등 과 같이 사용한다.
