@@ -1,0 +1,31 @@
+DOM Node 조작하기
+
+HTML은 동적으로 변경할 수 있다. 
+querySelector로 태그를 선택하여 DOM API의 다양한 메서드를 활용한다.
+Html 코드 사이에 태그를 추가하거나 삭제, 이동 등을 동적으로 수행한다.
+
+Ajax 와 비동기
+
+ function ajax() {
+   var oReq = new XMLHttpRequest();
+	
+  oReq.addEventListener("load", function() {
+    console.log(this.responseText);
+  });
+	
+   oReq.open("GET", "http://www.example.org/example.txt");
+   oReq.send();
+}
+
+함수 안에 정의된 함수는 콜백함수로 ajax()의 실행이 종료되면 실행되는 함수이다.
+즉 비동기로 실행되는 함수이다. 이를 이용하여 화면의 전환 없이 데이터를 가져오는 작업 등을 할 수 있다.
+
+CORS 와 JSONP
+
+자바스크립트(XMLHttpRequest)로 다른 웹사이트에 접근할 때는 같은 프로토콜, 호스트, 포트를 가진 페이지만 접근이 가능하다. (보안 규착)
+
+하지만 Restful API가 추세인 요즘은 이러한 규제가 걸림돌이 된다.
+
+따라서 만들어진 추가 정책이 CORS이고, 서버에서 외부 요청을 승인할 경우 ajax접근이 가능해 진다.
+
+또한 JSONP방식으로도 가능한데, css나 js 같은 리소스 파일은 정책의 영향을 받지 않고 로딩이 가능한데, 이를 응용해서 외부 서버에서 js파일을 읽어오듯이 요청한 결과를 json파일로 바꿔주는 편법이다. 단 get방식만 가능하다.
